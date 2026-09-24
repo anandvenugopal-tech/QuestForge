@@ -1,1 +1,3 @@
 # QuestForge
+
+QuestForge is a turn-based RPG battle engine built with Python, designed to demonstrate object-oriented programming principles and software design patterns through a level-based development approach. The project will gradually evolve into a playable game featuring characters, enemies, combat mechanics, inventory management, and game saving/loading. Its modular architecture separates game logic, design patterns, infrastructure, and testing to ensure the codebase remains clean, maintainable, and extensible.
