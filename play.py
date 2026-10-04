@@ -13,4 +13,7 @@ if __name__ == "__main__":
 
     hero.attack(goblin)
     print(goblin.describe())
+
+    hero.health = -50
+    print(hero.get_health)
     
