@@ -20,8 +20,7 @@ class Mage(Character):
     def speacial_ability(self, target: Character):
         cost = 20
         if self.mana < cost:
-            print(f"{self.name} doesn't have enough mana!")
-            return
+            raise InsuffientManaError("{self.name} needs {cost} mana, has {self.mana}")
         self.mana -= cost
         damage = self.attack_power * 3
         target.take_damage(damage)

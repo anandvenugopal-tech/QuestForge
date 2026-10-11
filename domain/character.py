@@ -40,10 +40,9 @@ class Character(ABC):
     def describe(self) -> str:
         return f"{self.name} has {self._health} HP and {self.attack_power} ATK"
 
-
     def attack(self, target: Character) -> None:
         if not self.is_alive:
-            return 
+            return DeadCharacterError(f"{self.name} is dead and can not act")
         target.take_damage(self.attack_power)
         print(f"{self.name} attacks {target.name} for {self.attack_power} damage!")
 

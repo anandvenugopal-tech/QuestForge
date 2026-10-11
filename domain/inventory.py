@@ -7,6 +7,8 @@ class Inventory:
         self._items.append(item)
 
     def use(self, index: int, target: Character):
+        if not self._items:
+            raise InventoryEmptyError("Inventory is empty")
         item = self._items.pop(index)
         return item.apply(target)
 
