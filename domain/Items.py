@@ -1,6 +1,6 @@
-from domain.item import Item
+from domain.item import Usable, Equippable
 
-class HealthPotion(Item):
+class HealthPotion(Usable):
     
     def __init__(self, heal_amount: int = 25):
         self.heal_amount = heal_amount
@@ -10,7 +10,7 @@ class HealthPotion(Item):
         return f"{character.name} drinks a potion and heals {self.heal_amount} HP!"
 
 
-class Weapon(Item):
+class Weapon(Equippable):
 
     def __init__(self, name: str, bous_attack: int):
         self.name = name
@@ -21,12 +21,12 @@ class Weapon(Item):
         return f"{character.name} equips {self.name} (+{self.bonus_attack} ATK)"    
     
 
-class Armor(Item):
+class Armor(Equippable):
 
     def __init__(self, name: str, defense_bonus: int):
         self.name = name
         self.defense_bonus = defense_bonus
     
-    def play(self, character: Character):
+    def apply(self, character: Character):
         character.defence(self.defense_bonus)
-        
+
