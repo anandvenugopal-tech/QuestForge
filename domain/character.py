@@ -48,7 +48,7 @@ class Character(ABC):
 
     @abstractmethod
     def speacial_ability(self):
-         """Every concrete Character MUST define its own special move."""
+        """Every concrete Character MUST define its own special move."""
         raise NotImplementedError
 
     

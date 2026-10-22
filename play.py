@@ -1,21 +1,23 @@
 from domain.character import Character
 from domain.classes import Warrior, Mage, Rouge, Cleric
 from domain.battle import run_special_round, total_party_damage
+from pattern.creational import CharacterFactory, EnemyBuilder
+from domain.items import HealthPotion
 
 
+player = CharacterFactory.create("mage", "Sylla")
 
 
-if __name__ == "__main__":
+# Using Builder
+boss = (EnemyBuilder("Dragon")
+        .with_health(500)
+        .with_attack(50)
+        .with_loot(HealthPotion())
+        .build())
 
-    party = [Warrior('Bram'), Mage('Sylla'), Rouge('Kade')]
-    dummy = Warrior('Training Dummy')
 
-    for member in party:
-        member.speacial_ability(dummy)
-        print(f"Dummy HP: {dummy.get_health}\n")
-
-    total_party_damage(party, dummy)
-    print(f"Dummy HP: {dummy.get_health}\n")
+print(f"Created {player.name} (HP: {player.get_health})")
+print(f"Created {boss.name} (HP: {boss.get_health})")
     
 
     
