@@ -3,21 +3,22 @@ from domain.classes import Warrior, Mage, Rouge, Cleric
 from domain.battle import run_special_round, total_party_damage
 from pattern.creational import CharacterFactory, EnemyBuilder
 from domain.items import HealthPotion
+from pattern.singleton import GameManager
 
 
-player = CharacterFactory.create("mage", "Sylla")
+manager1 = GameManager()
+manager1.difficulty = "hard"
 
 
-# Using Builder
-boss = (EnemyBuilder("Dragon")
-        .with_health(500)
-        .with_attack(50)
-        .with_loot(HealthPotion())
-        .build())
+# Somewhere else in the code, we try to create a new manager
+manager2 = GameManager()
 
 
-print(f"Created {player.name} (HP: {player.get_health})")
-print(f"Created {boss.name} (HP: {boss.get_health})")
+print(f"Manager 2 difficulty: {manager2.difficulty}") 
+# Outputs "hard" because manager1 and manager2 are the exact same object!
+
+
+print(f"Are they the same object? {manager1 is manager2}")
     
 
     
