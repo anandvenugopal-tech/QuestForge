@@ -6,19 +6,27 @@ from domain.items import HealthPotion
 from pattern.singleton import GameManager
 
 
-manager1 = GameManager()
-manager1.difficulty = "hard"
+from domain.classes import Warrior
+from pattern.decorators import RageBuff, PoisonDebuff
 
 
-# Somewhere else in the code, we try to create a new manager
-manager2 = GameManager()
+hero = Warrior("Bram")
+print(f"Base attack: {hero.attack_power}")
 
 
-print(f"Manager 2 difficulty: {manager2.difficulty}") 
-# Outputs "hard" because manager1 and manager2 are the exact same object!
+# Wrap the hero in a RageBuff
+raging_hero = RageBuff(hero)
+print(f"Raging attack: {raging_hero.attack_power}")
 
 
-print(f"Are they the same object? {manager1 is manager2}")
+# Wrap the raging hero in a PoisonDebuff (Stacking!)
+poisoned_raging_hero = PoisonDebuff(raging_hero)
+print(f"Still raging attack: {poisoned_raging_hero.attack_power}")
+
+
+# Trigger the poison
+print(poisoned_raging_hero.tick())
+print(f"HP after poison: {poisoned_raging_hero.get_health}")
     
 
     
